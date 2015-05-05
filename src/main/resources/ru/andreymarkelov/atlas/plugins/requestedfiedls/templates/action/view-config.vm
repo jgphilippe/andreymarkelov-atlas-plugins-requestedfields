@@ -16,6 +16,12 @@
         <td>*****</td>
     </tr>
     #end
+    #if($reqHeaders != "")
+        <tr>
+            <td>$i18n.getText('requestedfields.config.reqHeaders')</td>
+            <td>$reqHeaders</td>
+        </tr>
+    #end
     <tr>
         <td>$i18n.getText('requestedfields.config.reqtype')</td>
         <td>$reqType</td>

@@ -20,6 +20,7 @@ public class EditConfiguration extends AbstractEditConfigurationItemAction {
     private String url;
     private String user;
     private String password;
+    private String reqHeaders;
     private String reqType;
     private String reqData;
     private String reqPath;
@@ -42,6 +43,7 @@ public class EditConfiguration extends AbstractEditConfigurationItemAction {
             this.url = data.getUrl();
             this.user = data.getUser();
             this.password = data.getPassword();
+            this.reqHeaders = data.getReqHeaders();
             this.reqType = data.getReqType();
             this.reqData = data.getReqData();
             this.reqPath = data.getReqPath();
@@ -58,7 +60,7 @@ public class EditConfiguration extends AbstractEditConfigurationItemAction {
         }
 
         String reqDataType = isXmlField() ? "xml" : "json";
-        pluginData.storeJSONFieldData(getFieldConfig(), new JSONFieldData(url, user, password, reqType, reqDataType, reqData, reqPath));
+        pluginData.storeJSONFieldData(getFieldConfig(), new JSONFieldData(url, user, password, reqHeaders, reqType, reqDataType, reqData, reqPath));
         return getRedirect("/secure/admin/ConfigureCustomField!default.jspa?customFieldId=" + getFieldConfig().getCustomField().getIdAsLong().toString());
     }
 
@@ -75,6 +77,10 @@ public class EditConfiguration extends AbstractEditConfigurationItemAction {
 
     public String getPassword() {
         return password;
+    }
+
+    public String getReqHeaders() {
+        return reqHeaders;
     }
 
     public String getReqData() {
@@ -104,6 +110,10 @@ public class EditConfiguration extends AbstractEditConfigurationItemAction {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setReqHeaders(String reqHeaders) {
+        this.reqHeaders = reqHeaders;
     }
 
     public void setReqData(String reqData) {

@@ -42,6 +42,7 @@ public class SimpleHttpConfig implements FieldConfigItemType {
             parms.put("url", data.getUrl());
             parms.put("user", data.getUser());
             parms.put("password", data.getPassword());
+            parms.put("reqHeaders", data.getReqHeaders());
             parms.put("reqType", data.getReqType());
             parms.put("reqData", data.getReqData());
             parms.put("reqPath", data.getReqPath());
@@ -73,6 +74,7 @@ public class SimpleHttpConfig implements FieldConfigItemType {
             parms.put("url", data.getUrl());
             parms.put("user", data.getUser());
             parms.put("password", data.getPassword());
+            parms.put("reqHeaders", data.getReqHeaders());
             parms.put("reqType", data.getReqType());
             parms.put("reqData", data.getReqData());
             parms.put("reqPath", data.getReqPath());

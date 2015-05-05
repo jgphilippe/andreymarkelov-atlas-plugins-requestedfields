@@ -37,7 +37,7 @@ public class XmlHttpRunner {
         HttpRunnerData res = new HttpRunnerData();
 
         try {
-            HttpSender httpService = new HttpSender(data.getUrl(), data.getReqType(), data.getReqDataType(), data.getUser(), data.getPassword());
+            HttpSender httpService = new HttpSender(data.getUrl(), data.getReqType(), data.getReqDataType(), data.getUser(), data.getPassword(), data.getReqHeaders());
             String xml = httpService.call(data.getReqData());
 
             List<String> vals = new ArrayList<String>();

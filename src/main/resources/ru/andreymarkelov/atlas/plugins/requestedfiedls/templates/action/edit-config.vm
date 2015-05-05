@@ -49,6 +49,10 @@
                     <td><input type="password" id="password" name="password" value="$!{action.getPassword()}"/></td>
                 </tr>
                 <tr>
+                    <td>$i18n.getText('requestedfields.config.reqHeaders'):</td>
+                    <td><input type="text" id="reqHeaders" name="reqHeaders" value="$!{action.getReqHeaders()}"/></td>
+                </tr>
+                <tr>
                     <td>$i18n.getText('requestedfields.config.reqtype')*:</td>
                     <td>
                         <select id="reqType" name="reqType">

@@ -43,7 +43,7 @@ public class SelectTextCustomFieldValueProvider implements CustomFieldValueProvi
 
     private List<String> getJsonData(JSONFieldData data) {
         try {
-            HttpSender httpService = new HttpSender(data.getUrl(), data.getReqType(), data.getReqDataType(), data.getUser(), data.getPassword());
+            HttpSender httpService = new HttpSender(data.getUrl(), data.getReqType(), data.getReqDataType(), data.getUser(), data.getPassword(), data.getReqHeaders());
             String json = httpService.call(data.getReqData());
 
             JsonPath namePath = JsonPath.compile(data.getReqPath());
@@ -83,7 +83,7 @@ public class SelectTextCustomFieldValueProvider implements CustomFieldValueProvi
 
     private List<String> getXmlData(JSONFieldData data) {
         try {
-            HttpSender httpService = new HttpSender(data.getUrl(), data.getReqType(), data.getReqDataType(), data.getUser(), data.getPassword());
+            HttpSender httpService = new HttpSender(data.getUrl(), data.getReqType(), data.getReqDataType(), data.getUser(), data.getPassword(), data.getReqHeaders());
             String xml = httpService.call(data.getReqData());
 
             List<String> vals = new ArrayList<String>();

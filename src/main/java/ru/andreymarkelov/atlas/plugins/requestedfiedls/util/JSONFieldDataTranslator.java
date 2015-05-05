@@ -17,6 +17,7 @@ public class JSONFieldDataTranslator {
             data.setUrl(jsonObj.getString("url"));
             data.setUser(jsonObj.getString("user"));
             data.setPassword(jsonObj.getString("password"));
+            data.setReqHeaders(jsonObj.getString("reqHeaders"));
             data.setReqType(jsonObj.getString("reqType"));
             data.setReqData(jsonObj.getString("reqData"));
             data.setReqPath(jsonObj.getString("reqPath"));
@@ -34,6 +35,7 @@ public class JSONFieldDataTranslator {
             jsonObj.put("url", obj.getUrl());
             jsonObj.put("user", obj.getUser());
             jsonObj.put("password", obj.getPassword());
+            jsonObj.put("reqHeaders", obj.getReqHeaders());
             jsonObj.put("reqType", obj.getReqType());
             jsonObj.put("reqData", obj.getReqData());
             jsonObj.put("reqPath", obj.getReqPath());

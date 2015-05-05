@@ -33,6 +33,12 @@ public class HttpSender {
     */
     private String password;
 
+
+    /**
+     * ReqHeaders.
+     */
+    private String reqHeaders;
+
     /**
      * User.
      */
@@ -46,12 +52,13 @@ public class HttpSender {
     /**
      * Constructor.
      */
-    public HttpSender(String bindingUrl, String type, String reqDataType, String user, String password) {
+    public HttpSender(String bindingUrl, String type, String reqDataType, String user, String password, String reqHeaders) {
         this.bindingUrl = bindingUrl;
         this.type = type;
         this.reqDataType = reqDataType;
         this.user = user;
         this.password = password;
+        this.reqHeaders = reqHeaders;
     }
 
     public String call(String data) {
@@ -67,6 +74,20 @@ public class HttpSender {
             httpConn.setRequestProperty("Host", url.getHost());
             httpConn.setRequestProperty("Content-Type","application/" + reqDataType + "; charset=utf-8");
             httpConn.setRequestProperty("Accept","application/" + reqDataType);
+
+            if (isReqHeaders()) {
+
+                for (String header : reqHeaders.split(";")) {
+
+                    String[] headerParts = header.split(":");
+
+                    if (headerParts.length == 2) {
+
+                        httpConn.setRequestProperty(headerParts[0],headerParts[1]);
+                    }
+                }
+            }
+
             if (isAuth()) {
                 httpConn.setRequestProperty("Authorization", "Basic " + getAuthRealm());
             }
@@ -121,6 +142,10 @@ public class HttpSender {
 
     private boolean isAuth() {
         return (user != null && user.length() > 0) && (password != null && password.length() > 0);
+    }
+
+    private boolean isReqHeaders() {
+        return (reqHeaders != null && reqHeaders.length() > 0);
     }
 
     private boolean isPost() {

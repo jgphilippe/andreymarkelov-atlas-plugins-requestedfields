@@ -27,7 +27,7 @@ public class JsonHttpRunner {
         HttpRunnerData res = new HttpRunnerData();
 
         try {
-            HttpSender httpService = new HttpSender(data.getUrl(), data.getReqType(), data.getReqDataType(), data.getUser(), data.getPassword());
+            HttpSender httpService = new HttpSender(data.getUrl(), data.getReqType(), data.getReqDataType(), data.getUser(), data.getPassword(), data.getReqHeaders());
             String json = httpService.call(data.getReqData());
             JsonPath namePath = JsonPath.compile(data.getReqPath());
             List<String> vals = namePath.read(json, List.class);
